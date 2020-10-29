@@ -4,6 +4,7 @@ import com.example.demo.controller.dto.requestdto.TrainerRequestDTO;
 import com.example.demo.controller.dto.responsedeto.TrainerResponseDTO;
 import com.example.demo.controller.dto.responsedeto.TrainersResponseDTO;
 import com.example.demo.service.TrainerService;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,7 @@ public class TrainerController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public TrainerResponseDTO createTrainer(@RequestBody @Valid TrainerRequestDTO trainerRequestDTO) {
         return new TrainerResponseDTO(trainerService.createTrainer(trainerRequestDTO));
     }
