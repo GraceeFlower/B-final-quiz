@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.controller.dto.requestdto.TraineeRequestDTO;
 import com.example.demo.entity.Trainee;
+import com.example.demo.exception.InvalidPersonException;
 import com.example.demo.repository.TraineeRepository;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,11 @@ public class TraineeService {
     public List<Trainee> getTrainees(Boolean grouped) {
         return grouped ? new ArrayList<>()
                 : traineeRepository.findByGroupedIsFalse();
+    }
+
+    public void deleteTrainee(Long id) {
+        traineeRepository.findById(id)
+                .orElseThrow(() -> new InvalidPersonException("Trainee is not exist!"));
+        traineeRepository.deleteById(id);
     }
 }

@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.controller.dto.requestdto.TrainerRequestDTO;
 import com.example.demo.entity.Trainer;
+import com.example.demo.exception.InvalidPersonException;
 import com.example.demo.repository.TrainerRepository;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,11 @@ public class TrainerService {
                 false
         );
         return trainerRepository.save(trainer);
+    }
+
+    public void deleteTrainer(Long id) {
+        trainerRepository.findById(id)
+                .orElseThrow(() -> new InvalidPersonException("Trainer is not exist!"));
+        trainerRepository.deleteById(id);
     }
 }

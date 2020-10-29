@@ -13,6 +13,12 @@ import java.util.Set;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(InvalidPersonException.class)
+    public ResponseEntity<ErrorResult> handle(InvalidPersonException ex) {
+        ErrorResult errorResult = new ErrorResult(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResult);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResult> handle(MethodArgumentNotValidException ex) {
         String message = Objects.requireNonNull(ex.getBindingResult().getFieldError()).getDefaultMessage();

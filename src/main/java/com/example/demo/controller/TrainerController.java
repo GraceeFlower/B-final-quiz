@@ -34,4 +34,9 @@ public class TrainerController {
         return new TrainerResponseDTO(trainerService.createTrainer(trainerRequestDTO));
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteTrainee(@PathVariable Long id) {
+        trainerService.deleteTrainer(id);
+    }
 }
