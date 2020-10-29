@@ -26,9 +26,4 @@ public class Group {
     private List<Trainer> trainers = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL)
     private List<Trainee> trainees = new ArrayList<>();
-
-    public Group(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 }
