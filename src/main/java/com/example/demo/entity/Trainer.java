@@ -15,11 +15,10 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Trainee {
-
+public class Trainer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Boolean grouped;
+    private Boolean grouped = false;
 }
