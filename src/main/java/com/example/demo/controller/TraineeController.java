@@ -1,11 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.controller.dto.responsedeto.TraineeResponseDTO;
+import com.example.demo.controller.dto.responsedeto.TraineesResponseDTO;
 import com.example.demo.entity.Trainee;
+import com.example.demo.entity.Trainer;
 import com.example.demo.service.TraineeService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class TraineeController {
     }
 
     @GetMapping("/trainees")
-    public List<Trainee> getTrainees(@RequestParam(name = "grouped") Boolean grouped) {
-        return traineeService.getTrainees(grouped);
+    public List<TraineeResponseDTO> getTrainees(@RequestParam(name = "grouped") Boolean grouped) {
+        return new TraineesResponseDTO().toList(traineeService.getTrainees(grouped));
     }
 }

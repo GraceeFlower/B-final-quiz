@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Trainer;
+import com.example.demo.controller.dto.responsedeto.TrainerResponseDTO;
+import com.example.demo.controller.dto.responsedeto.TrainersResponseDTO;
 import com.example.demo.service.TrainerService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,8 @@ public class TrainerController {
     }
 
     @GetMapping("/trainers")
-    public List<Trainer> getTrainers(@RequestParam(name = "grouped") Boolean grouped) {
-        return trainerService.getTrainers(grouped);
+    public List<TrainerResponseDTO> getTrainers(@RequestParam(name = "grouped") Boolean grouped) {
+        return new TrainersResponseDTO().toList(trainerService.getTrainers(grouped));
     }
 
 }
