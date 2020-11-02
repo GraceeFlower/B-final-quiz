@@ -21,6 +21,7 @@ public class TraineeService {
     }
 
     public Trainee createTrainee(TraineeRequestDTO traineeRequestDTO) {
+        // TODO GTB-知识点: - JPA的Entity已经定义了自动生成的id
         Trainee trainee = new Trainee(
                 traineeIdSeq.incrementAndGet(),
                 traineeRequestDTO.getName(),
@@ -29,6 +30,7 @@ public class TraineeService {
     }
 
     public List<Trainee> getTrainees(Boolean grouped) {
+        // TODO GTB-知识点: - grouped=true时，应返回已经分组学员
         return grouped ? new ArrayList<>()
                 : traineeRepository.findByGroupedIsFalse();
     }

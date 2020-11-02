@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/trainers")
 @CrossOrigin("http://localhost:1234")
+// TODO GTB-知识点: - 此处的@Validated注解是多余的
 @Validated
 public class TrainerController {
 
